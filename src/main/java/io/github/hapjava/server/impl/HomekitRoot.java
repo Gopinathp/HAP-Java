@@ -121,7 +121,6 @@ public class HomekitRoot {
         .thenAccept(
             port -> {
               try {
-                refreshAuthInfo();
                 advertiser.advertise(
                     label, authInfo.getMac(), port, configurationIndex, authInfo.getSetupId());
               } catch (Exception e) {

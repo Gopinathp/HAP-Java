@@ -26,6 +26,7 @@ public class JmdnsHomekitAdvertiser {
   private String setupId;
   private int port;
   private int configurationIndex;
+  private ServiceInfo serviceInfo;
 
   public JmdnsHomekitAdvertiser(JmDNS jmdns) {
     this.jmdns = jmdns;
@@ -87,12 +88,15 @@ public class JmdnsHomekitAdvertiser {
   }
 
   private void unregisterService() {
-    jmdns.unregisterService(buildServiceInfo());
+    if (serviceInfo != null) {
+      jmdns.unregisterService(serviceInfo);
+    }
   }
 
   private void registerService() throws IOException {
     logger.info("Registering " + SERVICE_TYPE + " on port " + port);
-    jmdns.registerService(buildServiceInfo());
+    serviceInfo = buildServiceInfo();
+    jmdns.registerService(serviceInfo);
   }
 
   private ServiceInfo buildServiceInfo() {
