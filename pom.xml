@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.github.yfre</groupId>
+	<groupId>com.github.j-n-k</groupId>
 	<artifactId>hap-java</artifactId>
 	<name>hap-java</name>
 	<description>Homekit Accessory Protocol for Java</description>
-	<version>2.1.0OH</version>
+	<version>2.0.0.OH2</version>
 	<packaging>jar</packaging>
-	<url>https://github.com/hap-java/HAP-Java</url>
+	<url>https://github.com/j-n-k/HAP-Java</url>
 
 	<properties>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,9 +23,9 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:https://github.com/hap-java/HAP-Java.git</connection>
-		<developerConnection>scm:git:git@github.com:hap-java/HAP-Java.git</developerConnection>
-		<url>https://github.com/hap-java/HAP-Java.git</url>
+		<connection>scm:git:https://github.com/j-n-k/HAP-Java.git</connection>
+		<developerConnection>scm:git:git@github.com:j-n-k/HAP-Java.git</developerConnection>
+		<url>https://github.com/j-n-k/HAP-Java.git</url>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -196,7 +196,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.2.0</version>
 				<configuration>
-					<excludePackageNames>io.github.hapjava.server.impl</excludePackageNames>
+					<excludePackageNames>*.impl.*:*.impl</excludePackageNames>
 					<source>8</source>
 				</configuration>
 				<executions>
@@ -204,24 +204,6 @@
 						<id>attach-javadocs</id>
 						<goals>
 							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.1.1</version>
-				<configuration>
-					<descriptors>
-						<descriptor>deploy/distribution.xml</descriptor>
-					</descriptors>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id> <!-- this is used for inheritance merges -->
-						<phase>package</phase> <!-- bind to the packaging phase -->
-						<goals>
-							<goal>single</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -238,7 +220,7 @@
 							<goal>publish-scm</goal>
 						</goals>
 						<configuration>
-							<pubScmUrl>scm:git:git@github.com:hap-java/HAP-Java.git</pubScmUrl>
+							<pubScmUrl>scm:git:git@github.com:J-N-K/HAP-Java.git</pubScmUrl>
 							<scmBranch>gh-pages</scmBranch>
 						</configuration>
 					</execution>
@@ -278,13 +260,9 @@
 	</build>
 
 	<distributionManagement>
-		<site>
-			<id>website</id>
-			<url>https://hap-java.github.io/</url>
-		</site>
 		<repository>
-			<id>bintray-yfre-hap-java</id>
-			<url>https://api.bintray.com/maven/yfre/hap-java/hap-java/;publish=0</url>
+			<id>bintray-j-n-k-repo</id>
+			<url>https://api.bintray.com/maven/j-n-k/hap-java/hap-java/;publish=0</url>
 		</repository>
 	</distributionManagement>
 
@@ -300,7 +278,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.0.1</version>
 				<configuration>
-					<excludePackageNames>io.github.hapjava.server.impl</excludePackageNames>
+					<excludePackageNames>*.impl.*:*.impl</excludePackageNames>
 				</configuration>
 				<reportSets>
 					<reportSet>
@@ -317,4 +295,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
+
 </project>
